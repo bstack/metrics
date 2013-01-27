@@ -8,7 +8,7 @@ namespace Metrics
 		static void Main(
 			string[] args)
 		{
-			Metrics.v1.Program.Run();
+			Metrics.v2.Program.Run();
 		}
 	}
 }

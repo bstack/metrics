@@ -41,6 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="v2\IRecorderTimerCompletion.cs" />
+    <Compile Include="v2\RecorderTimer.cs" />
+    <Compile Include="v2\StatsdPipe.cs" />
+    <Compile Include="v2\IRecorder.cs" />
+    <Compile Include="v2\Program.cs" />
+    <Compile Include="v2\Recorder.cs" />
+    <Compile Include="v2\Server.cs" />
+    <Compile Include="v2\Worker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="v1\etsy_statsd_client.cs" />
