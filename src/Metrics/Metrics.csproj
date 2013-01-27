@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Recorder.cs" />
+    <Compile Include="IRecorder.cs" />
     <Compile Include="Worker.cs" />
     <Compile Include="etsy_statsd_client.cs" />
     <Compile Include="Program.cs" />

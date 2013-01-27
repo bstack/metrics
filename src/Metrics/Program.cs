@@ -8,8 +8,11 @@ namespace Metrics
 {
 	class Program
 	{
-		public static Statsd.StatsdPipe Metrics = new Statsd.StatsdPipe("127.0.0.1", 30000);
-	
+		public static Metrics.IRecorder Metrics = new Metrics.Recorder(
+			new Statsd.StatsdPipe("127.0.0.1", 30000),
+			"MyProduct",
+			"TheApp");
+		
 		
 		static void Main(
 			string[] args)
@@ -38,7 +41,7 @@ namespace Metrics
 						var _stopWatch = Stopwatch.StartNew();
 						_worker.DoWork(_sleep);
 						_stopWatch.Stop();
-						Program.Metrics.Timing("MyApp.Program.Work", (int)_stopWatch.ElapsedMilliseconds);
+						Program.Metrics.Timing("Program.Work", _stopWatch.Elapsed);
 					}
 				},
 				_cancellationTokenSource.Token);

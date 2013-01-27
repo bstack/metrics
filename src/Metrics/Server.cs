@@ -29,7 +29,7 @@ namespace Metrics
 			while(true)
 			{
 				var _receivedData = this.c_listener.Receive(ref _IPEndPoint);
-				var _receivedDataAsString = Encoding.UTF8.GetString(_receivedData, 0, _receivedData.Length);
+				var _receivedDataAsString = Encoding.Default.GetString(_receivedData, 0, _receivedData.Length);
 				Console.Write("\t{0}", _receivedDataAsString);
 			}
 		}

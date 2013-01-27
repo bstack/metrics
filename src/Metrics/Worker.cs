@@ -9,9 +9,9 @@ namespace Metrics
 		public void DoWork(
 			TimeSpan sleep)
 		{
-			Program.Metrics.Increment("MyApp.Worker.DoWork.Enter");
+			Program.Metrics.Increment("Worker.DoWork.Enter");
 			Thread.Sleep(sleep);
-			Program.Metrics.Increment("MyApp.Worker.DoWork.Exiting");
+			Program.Metrics.Increment("Worker.DoWork.Exiting");
 		}
 	}
 }
