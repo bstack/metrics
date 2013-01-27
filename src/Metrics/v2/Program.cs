@@ -8,10 +8,12 @@ namespace Metrics.v2
 {
 	public class Program
 	{
-		public static IRecorder Metrics = new Recorder(
-			new StatsdPipe("127.0.0.1", 30000),
-			"MyProduct.v2",
-			"TheApp");
+		// Toggle based on config
+		//public static IRecorder Metrics = new Recorder(
+		//	new StatsdPipe("127.0.0.1", 30000),
+		//	"MyProduct.v2",
+		//	"TheApp");
+		public static IRecorder Metrics = new NullRecorder();
 		
 		
 		public static void Run()

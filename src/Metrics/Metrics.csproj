@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="v2\NullRecorder.cs" />
     <Compile Include="v2\IRecorderTimerCompletion.cs" />
     <Compile Include="v2\RecorderTimer.cs" />
     <Compile Include="v2\StatsdPipe.cs" />
