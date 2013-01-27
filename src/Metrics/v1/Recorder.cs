@@ -1,9 +1,9 @@
 ﻿using System;
 
 
-namespace Metrics
+namespace Metrics.v1
 {
-	public class  Recorder : Metrics.IRecorder
+	public class  Recorder : IRecorder
 	{
 		private readonly Statsd.StatsdPipe c_pipe;
 		private readonly string c_keyPrefix;

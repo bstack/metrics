@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Metrics
+namespace Metrics.v1
 {
 	public interface IRecorder
 	{
