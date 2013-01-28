@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Metrics.v3
+namespace Metrics.v3.Client
 {
 	public interface ITimingCompletionRecorder
 	{

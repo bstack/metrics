@@ -2,7 +2,7 @@
 using System.Diagnostics;
 
 
-namespace Metrics.v3
+namespace Metrics.v3.Client
 {
 	public class Timer : IDisposable
 	{

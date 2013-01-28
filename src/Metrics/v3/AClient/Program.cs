@@ -4,23 +4,23 @@ using System.Threading;
 using System.Threading.Tasks;
 
 
-namespace Metrics.v3
+namespace Metrics.v3.AClient
 {
 	public class Program
 	{
 		public static readonly Configuration Configuration;
-		public static readonly IRecorder Metrics;
+		public static readonly Metrics.v3.Client.IRecorder Metrics;
 
 
 		static Program()
 		{
 			Program.Configuration = new Configuration();
 
-			Program.Metrics = new NullRecorder();
+			Program.Metrics = new Metrics.v3.Client.NullRecorder();
 			if (Program.Configuration.IsConfiguredForClient)
 			{
-				Program.Metrics = new Recorder(
-					new StatsdPipe(Program.Configuration.HostName, Program.Configuration.Port),
+				Program.Metrics = new Metrics.v3.Client.Recorder(
+					new Metrics.v3.Client.StatsdPipe(Program.Configuration.HostName, Program.Configuration.Port),
 					Program.Configuration.KeyPrefix);
 			}
 		}
@@ -37,7 +37,7 @@ namespace Metrics.v3
 				var _serverTask = new Task(
 					() =>
 						{
-							var _listener = new Server(Program.Configuration.Port);
+							var _listener = new Server.Server(Program.Configuration.Port);
 							_listener.Start();
 						},
 					_cancellationTokenSource.Token,

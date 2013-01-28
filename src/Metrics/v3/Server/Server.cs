@@ -4,7 +4,7 @@ using System.Net.Sockets;
 using System.Text;
 
 
-namespace Metrics.v3
+namespace Metrics.v3.Server
 {
 	public class Server
 	{

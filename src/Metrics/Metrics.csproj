@@ -42,16 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="v3\AClient\Program.cs" />
+    <Compile Include="v3\AClient\Worker.cs" />
+    <Compile Include="v3\Client\IRecorder.cs" />
+    <Compile Include="v3\Client\ITimingCompletionRecorder.cs" />
+    <Compile Include="v3\Client\NullRecorder.cs" />
+    <Compile Include="v3\Client\Recorder.cs" />
+    <Compile Include="v3\Client\StatsdPipe.cs" />
+    <Compile Include="v3\Client\Timer.cs" />
     <Compile Include="v3\Configuration.cs" />
-    <Compile Include="v3\IRecorder.cs" />
-    <Compile Include="v3\ITimingCompletionRecorder.cs" />
-    <Compile Include="v3\NullRecorder.cs" />
-    <Compile Include="v3\Program.cs" />
-    <Compile Include="v3\Recorder.cs" />
-    <Compile Include="v3\Timer.cs" />
-    <Compile Include="v3\Server.cs" />
-    <Compile Include="v3\StatsdPipe.cs" />
-    <Compile Include="v3\Worker.cs" />
+    <Compile Include="v3\Server\Server.cs" />
     <Compile Include="v2\NullRecorder.cs" />
     <Compile Include="v2\IRecorderTimerCompletion.cs" />
     <Compile Include="v2\RecorderTimer.cs" />

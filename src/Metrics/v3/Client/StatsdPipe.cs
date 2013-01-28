@@ -6,7 +6,7 @@ using System.Threading;
 using System.Text;
 
 
-namespace Metrics.v3
+namespace Metrics.v3.Client
 {
 	public class StatsdPipe
 	{

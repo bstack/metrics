@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Metrics.v3
+namespace Metrics.v3.Client
 {
 	public class Recorder : IRecorder, ITimingCompletionRecorder
 	{
@@ -15,6 +15,8 @@ namespace Metrics.v3
 		{
 			this.c_pipe = pipe;
 			this.c_keyPrefix = keyPrefix;
+
+			if (this.c_keyPrefix != null) { this.c_keyPrefix += "."; }
 		}
 
 
@@ -64,7 +66,7 @@ namespace Metrics.v3
 		private string ApplyKeyPrefix(
 			string key)
 		{
-			return this.c_keyPrefix == null ? key : this.c_keyPrefix  + key;
+			return this.c_keyPrefix  + key;
 		}
 	}
 }
