@@ -26,25 +26,25 @@ namespace Metrics.v2
 						var _listener = new Server(30000);
 						_listener.Start();
 					},
-					_cancellationTokenSource.Token);
+				_cancellationTokenSource.Token);
 			_serverTask.Start();
 
 			var _clientTask = new Task(
 				() =>
-				{
-					while (true)
 					{
-						_cancellationTokenSource.Token.ThrowIfCancellationRequested();
-
-						var _sleep = TimeSpan.FromSeconds(2);
-						var _worker = new Worker();
-
-						using (var _timer = Program.Metrics.Timing("Program.Work"))
+						while (true)
 						{
-							_worker.DoWork(_sleep);
+							_cancellationTokenSource.Token.ThrowIfCancellationRequested();
+
+							var _sleep = TimeSpan.FromSeconds(2);
+							var _worker = new Worker();
+
+							using (var _timer = Program.Metrics.Timing("Program.Work"))
+							{
+								_worker.DoWork(_sleep);
+							}
 						}
-					}
-				},
+					},
 				_cancellationTokenSource.Token);
 			_clientTask.Start();
 

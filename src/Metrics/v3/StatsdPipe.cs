@@ -17,10 +17,10 @@ namespace Metrics.v3
 
 
 		public StatsdPipe(
-			string host,
+			string hostName,
 			int port)
 		{
-			this.c_udpClient = new UdpClient(host, port);
+			this.c_udpClient = new UdpClient(hostName, port);
 		}
 
 
