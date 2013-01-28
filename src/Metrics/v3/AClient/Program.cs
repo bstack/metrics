@@ -37,7 +37,9 @@ namespace Metrics.v3.AClient
 				var _serverTask = new Task(
 					() =>
 						{
-							var _listener = new Server.Server(Program.Configuration.Port);
+							var _listener = new Server.Server(
+								Program.Configuration.Port,
+								new Metrics.v3.Server.IStatisticsProcessor[] { new Metrics.v3.Server.ConsoleWriterStatisticsProcessor() });
 							_listener.Start();
 						},
 					_cancellationTokenSource.Token,
@@ -54,12 +56,10 @@ namespace Metrics.v3.AClient
 							{
 								_cancellationTokenSource.Token.ThrowIfCancellationRequested();
 
-								var _sleep = TimeSpan.FromSeconds(2);
 								var _worker = new Worker();
-
 								using (var _timer = Program.Metrics.StartTimer("Program.Work"))
 								{
-									_worker.DoWork(_sleep);
+									_worker.DoWork();
 								}
 							}
 						},

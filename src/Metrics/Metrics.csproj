@@ -51,6 +51,10 @@
     <Compile Include="v3\Client\StatsdPipe.cs" />
     <Compile Include="v3\Client\Timer.cs" />
     <Compile Include="v3\Configuration.cs" />
+    <Compile Include="v3\Server\ConsoleWriterStatisticsProcessor.cs" />
+    <Compile Include="v3\Server\StatisticType.cs" />
+    <Compile Include="v3\Server\IStatisticsProcessor.cs" />
+    <Compile Include="v3\Server\SimplePeriodicFileDumperStatisticsProcessor.cs" />
     <Compile Include="v3\Server\Server.cs" />
     <Compile Include="v2\NullRecorder.cs" />
     <Compile Include="v2\IRecorderTimerCompletion.cs" />
@@ -69,6 +73,7 @@
     <Compile Include="v1\Recorder.cs" />
     <Compile Include="v1\Server.cs" />
     <Compile Include="v1\Worker.cs" />
+    <Compile Include="v3\Server\RawStatistic.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
