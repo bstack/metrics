@@ -2,7 +2,7 @@
 using System.Threading;
 
 
-namespace Metrics.v3.AClient
+namespace Metrics.v3.SampleUsage
 {
 	public class Worker
 	{
@@ -10,7 +10,7 @@ namespace Metrics.v3.AClient
 		{
 			Program.Metrics.Increment("Worker.DoWork.Enter");
 			Thread.Sleep(new Random().Next(5000));
-			Program.Metrics.Increment("Worker.DoWork.Exiting");
+			Program.Metrics.Increment("Worker.DoWork.Exiting", 1, .81);
 		}
 	}
 }

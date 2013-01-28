@@ -29,6 +29,7 @@ namespace Metrics.v3.Server
 		{
 			this.c_listener = new UdpClient(this.c_port);
 			var _IPEndPoint = new IPEndPoint(IPAddress.Any, this.c_port);
+
 			while(true)
 			{
 				var _rawStatisticData = this.c_listener.Receive(ref _IPEndPoint);

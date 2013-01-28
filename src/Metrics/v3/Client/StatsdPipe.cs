@@ -13,7 +13,7 @@ namespace Metrics.v3.Client
 		private readonly UdpClient c_udpClient;
 
 
-		private ThreadLocal<Random> c_random = new ThreadLocal<Random>();
+		private ThreadLocal<Random> c_random = new ThreadLocal<Random>(() => new Random());
 
 
 		public StatsdPipe(

@@ -6,12 +6,13 @@ namespace Metrics.v3.Server
 {
 	public class RawStatistic
 	{
-		private static Regex c_parsingRegex = new Regex(@"(?<key>.+):(?<value>.+)\|(?<typeIdentifier>.+)", RegexOptions.Compiled);
+		private static Regex c_parsingRegex = new Regex(@"(?<key>.+):(?<value>.+)\|(?<typeIdentifier>[a-z]{1,2})(\|@(?<sampleRate>.*))?", RegexOptions.Compiled);
 
 
 		public readonly StatisticType Type;
 		public readonly string Key;
 		public readonly double Value;
+		public readonly double SampleRate;
 
 
 		public RawStatistic(
@@ -29,6 +30,8 @@ namespace Metrics.v3.Server
 			this.Key = _match.Groups["key"].Value;
 
 			this.Value = double.Parse(_match.Groups["value"].Value);
+
+			this.SampleRate = double.Parse("0" + _match.Groups["sampleRate"].Value);
 		}
 	}
 }

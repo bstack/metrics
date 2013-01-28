@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 
-namespace Metrics.v3.AClient
+namespace Metrics.v3.SampleUsage
 {
 	public class Program
 	{
