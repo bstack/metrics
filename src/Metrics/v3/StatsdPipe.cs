@@ -88,7 +88,7 @@ namespace Metrics.v3
 		private void DoSend(
 			string statistic)
 		{
-			var _statisticData = Encoding.Default.GetBytes(statistic + "\n");
+			var _statisticData = Encoding.Default.GetBytes(statistic);
 			this.c_udpClient.Send(_statisticData, _statisticData.Length);
 		}
 	}

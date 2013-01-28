@@ -21,8 +21,7 @@ namespace Metrics.v3
 			{
 				Program.Metrics = new Recorder(
 					new StatsdPipe(Program.Configuration.HostName, Program.Configuration.Port),
-					"MyProduct.v2",
-					"TheApp");
+					Program.Configuration.KeyPrefix);
 			}
 		}
 		

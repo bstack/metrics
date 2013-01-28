@@ -8,16 +8,15 @@ namespace Metrics.v3
 	{
 		public readonly string HostName;
 		public readonly int Port;
+		public readonly string KeyPrefix;
 		public readonly bool IsConfiguredForClient;
 
 
 		public Configuration ()
 		{
-			var _hostName = this.GetAppSettingsConfigurationValue("metricsHostName");
-			var _port = int.Parse(this.GetAppSettingsConfigurationValue("metricsPort", "0"));
-
-			this.HostName = _hostName;
-			this.Port= _port;
+			this.HostName = this.GetAppSettingsConfigurationValue("metricsHostName");
+			this.Port = int.Parse(this.GetAppSettingsConfigurationValue("metricsPort", "0"));
+			this.KeyPrefix = this.GetAppSettingsConfigurationValue("metricsKeyPrefix");
 
 			this.IsConfiguredForClient = (this.HostName != null && this.Port > 0);
 		}

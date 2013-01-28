@@ -11,12 +11,10 @@ namespace Metrics.v3
 
 		public Recorder(
 			StatsdPipe pipe,
-			string productName,
-			string applicationName)
+			string keyPrefix)
 		{
 			this.c_pipe = pipe;
-
-			this.c_keyPrefix = string.Format("{0}.{1}.", productName, applicationName);
+			this.c_keyPrefix = keyPrefix;
 		}
 
 
@@ -66,7 +64,7 @@ namespace Metrics.v3
 		private string ApplyKeyPrefix(
 			string key)
 		{
-			return this.c_keyPrefix + key; 
+			return this.c_keyPrefix == null ? key : this.c_keyPrefix  + key;
 		}
 	}
 }
