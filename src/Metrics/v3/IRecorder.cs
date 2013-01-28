@@ -29,7 +29,7 @@ namespace Metrics.v3
 			double sampleRate = 1.0);
 
 
-		Timer Timing(
+		IDisposable StartTimer(
 			string key);
 	}
 }

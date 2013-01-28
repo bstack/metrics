@@ -41,7 +41,8 @@ namespace Metrics.v3
 							var _listener = new Server(Program.Configuration.Port);
 							_listener.Start();
 						},
-					_cancellationTokenSource.Token);
+					_cancellationTokenSource.Token,
+					TaskCreationOptions.LongRunning);
 				_serverTask.Start();
 			}
 
@@ -57,13 +58,14 @@ namespace Metrics.v3
 								var _sleep = TimeSpan.FromSeconds(2);
 								var _worker = new Worker();
 
-								using (var _timer = Program.Metrics.Timing("Program.Work"))
+								using (var _timer = Program.Metrics.StartTimer("Program.Work"))
 								{
 									_worker.DoWork(_sleep);
 								}
 							}
 						},
-					_cancellationTokenSource.Token);
+					_cancellationTokenSource.Token,
+					TaskCreationOptions.LongRunning);
 				_clientTask.Start();
 			}
 

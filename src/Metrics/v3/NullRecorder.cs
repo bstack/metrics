@@ -41,7 +41,7 @@ namespace Metrics.v3
 		}
 
 
-		public Timer Timing(
+		public IDisposable StartTimer(
 			string key)
 		{
 			return new Timer(this, key);
