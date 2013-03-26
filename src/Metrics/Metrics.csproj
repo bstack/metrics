@@ -42,8 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="v3\AClient\Program.cs" />
-    <Compile Include="v3\AClient\Worker.cs" />
     <Compile Include="v3\Client\IRecorder.cs" />
     <Compile Include="v3\Client\ITimingCompletionRecorder.cs" />
     <Compile Include="v3\Client\NullRecorder.cs" />
@@ -51,6 +49,8 @@
     <Compile Include="v3\Client\StatsdPipe.cs" />
     <Compile Include="v3\Client\Timer.cs" />
     <Compile Include="v3\Configuration.cs" />
+    <Compile Include="v3\SampleUsage\Program.cs" />
+    <Compile Include="v3\SampleUsage\Worker.cs" />
     <Compile Include="v3\Server\ConsoleWriterStatisticsProcessor.cs" />
     <Compile Include="v3\Server\StatisticType.cs" />
     <Compile Include="v3\Server\IStatisticsProcessor.cs" />
