@@ -1,9 +1,9 @@
 ﻿using System;
 
 
-namespace Metrics.v3.Client
+namespace Metric.Client
 {
-	public class NullRecorder : IRecorder, ITimingCompletionRecorder
+	public class NullRecorder : Metric.Client.IRecorder, Metric.Client.ITimingCompletionRecorder
 	{
 		public void Increment(
 			string key,
@@ -44,7 +44,7 @@ namespace Metrics.v3.Client
 		public IDisposable StartTimer(
 			string key)
 		{
-			return new Timer(this, key);
+			return new Metric.Client.Timer(this, key);
 		}
 	}
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Metrics.v3.Client
+namespace Metric.Client
 {
 	public interface IRecorder
 	{

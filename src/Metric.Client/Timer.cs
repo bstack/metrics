@@ -2,11 +2,11 @@
 using System.Diagnostics;
 
 
-namespace Metrics.v3.Client
+namespace Metric.Client
 {
 	public class Timer : IDisposable
 	{
-		private readonly ITimingCompletionRecorder c_timingCompletionRecorder;
+		private readonly Metric.Client.ITimingCompletionRecorder c_timingCompletionRecorder;
 		private readonly string c_key;
 		private readonly Stopwatch c_stopWatch;
 
@@ -15,7 +15,7 @@ namespace Metrics.v3.Client
 
 
 		public Timer(
-			ITimingCompletionRecorder timingCompletionRecorder,
+			Metric.Client.ITimingCompletionRecorder timingCompletionRecorder,
 			string key)
 		{
 			this.c_timingCompletionRecorder = timingCompletionRecorder;

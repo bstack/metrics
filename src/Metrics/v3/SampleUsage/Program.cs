@@ -9,18 +9,18 @@ namespace Metrics.v3.SampleUsage
 	public class Program
 	{
 		public static readonly Configuration Configuration;
-		public static readonly Metrics.v3.Client.IRecorder Metrics;
+		public static readonly Metric.Client.IRecorder Metrics;
 
 
 		static Program()
 		{
 			Program.Configuration = new Configuration();
 
-			Program.Metrics = new Metrics.v3.Client.NullRecorder();
+			Program.Metrics = new Metric.Client.NullRecorder();
 			if (Program.Configuration.IsConfiguredForClient)
 			{
-				Program.Metrics = new Metrics.v3.Client.Recorder(
-					new Metrics.v3.Client.StatsdPipe(Program.Configuration.HostName, Program.Configuration.Port),
+				Program.Metrics = new Metric.Client.Recorder(
+					new Metric.Client.StatsdPipe(Program.Configuration.HostName, Program.Configuration.Port),
 					Program.Configuration.KeyPrefix);
 			}
 		}

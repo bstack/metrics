@@ -1,16 +1,16 @@
 ﻿using System;
 
 
-namespace Metrics.v3.Client
+namespace Metric.Client
 {
-	public class Recorder : IRecorder, ITimingCompletionRecorder
+	public class Recorder : Metric.Client.IRecorder, Metric.Client.ITimingCompletionRecorder
 	{
-		private readonly StatsdPipe c_pipe;
+		private readonly Metric.Client.StatsdPipe c_pipe;
 		private readonly string c_keyPrefix;
 
 
 		public Recorder(
-			StatsdPipe pipe,
+			Metric.Client.StatsdPipe pipe,
 			string keyPrefix)
 		{
 			this.c_pipe = pipe;
@@ -59,7 +59,7 @@ namespace Metrics.v3.Client
 		public IDisposable StartTimer(
 			string key)
 		{
-			return new Timer(this, key);
+			return new Metric.Client.Timer(this, key);
 		}
 
 
