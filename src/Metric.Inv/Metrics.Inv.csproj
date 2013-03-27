@@ -7,8 +7,8 @@
     <ProjectGuid>{2B29AE57-74DD-4608-B2C7-E634017A5EAF}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Metrics</RootNamespace>
-    <AssemblyName>Metrics</AssemblyName>
+    <RootNamespace>Metric.Inv</RootNamespace>
+    <AssemblyName>Metric.Inv</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
