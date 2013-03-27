@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 
-namespace Metrics.v3.SampleUsage
+namespace Metric.Inv.v3.SampleUsage
 {
 	public class Program
 	{
@@ -39,7 +39,7 @@ namespace Metrics.v3.SampleUsage
 						{
 							var _listener = new Server.Server(
 								Program.Configuration.Port,
-								new Metrics.v3.Server.IStatisticsProcessor[] { new Metrics.v3.Server.ConsoleWriterStatisticsProcessor() });
+								new Metric.Inv.v3.Server.IStatisticsProcessor[] { new Metric.Inv.v3.Server.ConsoleWriterStatisticsProcessor() });
 							_listener.Start();
 						},
 					_cancellationTokenSource.Token,

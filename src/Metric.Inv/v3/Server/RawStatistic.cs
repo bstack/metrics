@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 
 
-namespace Metrics.v3.Server
+namespace Metric.Inv.v3.Server
 {
 	public class RawStatistic
 	{

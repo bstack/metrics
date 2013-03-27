@@ -2,7 +2,7 @@
 using System.Diagnostics;
 
 
-namespace Metrics.v2
+namespace Metric.Inv.v2
 {
 	public class RecorderTimer : IDisposable
 	{

@@ -2,7 +2,7 @@
 using System.Threading;
 
 
-namespace Metrics.v1
+namespace Metric.Inv.v1
 {
 	public class Worker
 	{

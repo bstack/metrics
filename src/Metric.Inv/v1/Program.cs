@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 
-namespace Metrics.v1
+namespace Metric.Inv.v1
 {
 	public class Program
 	{

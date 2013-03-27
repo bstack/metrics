@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 
 
-namespace Metrics.v3.Server
+namespace Metric.Inv.v3.Server
 {
 	public class Server
 	{

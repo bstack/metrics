@@ -2,7 +2,7 @@
 using System.Configuration;
 
 
-namespace Metrics.v3
+namespace Metric.Inv.v3
 {
 	public class Configuration
 	{
