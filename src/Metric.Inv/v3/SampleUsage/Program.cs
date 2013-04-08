@@ -21,7 +21,8 @@ namespace Metric.Inv.v3.SampleUsage
 			{
 				Program.Metrics = new Metric.Client.Recorder(
 					new Metric.Client.StatsdPipe(Program.Configuration.HostName, Program.Configuration.Port),
-					Program.Configuration.KeyPrefix);
+					Program.Configuration.KeyPrefix,
+					Program.Configuration.KeySuffix);
 			}
 		}
 		

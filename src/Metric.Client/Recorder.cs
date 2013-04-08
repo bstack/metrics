@@ -7,16 +7,20 @@ namespace Metric.Client
 	{
 		private readonly Metric.Client.StatsdPipe c_pipe;
 		private readonly string c_keyPrefix;
+		private readonly string c_keySuffix;
 
 
 		public Recorder(
 			Metric.Client.StatsdPipe pipe,
-			string keyPrefix)
+			string keyPrefix = null,
+			string keySuffix = null)
 		{
 			this.c_pipe = pipe;
 			this.c_keyPrefix = keyPrefix;
+			this.c_keySuffix = keySuffix;
 
-			if (this.c_keyPrefix != null) { this.c_keyPrefix += "."; }
+			if (!string.IsNullOrWhiteSpace(this.c_keyPrefix))	{ this.c_keyPrefix += "."; }
+			if (!string.IsNullOrWhiteSpace(this.c_keySuffix))	{ this.c_keySuffix = this.c_keySuffix + "."; }
 		}
 
 
@@ -25,7 +29,7 @@ namespace Metric.Client
 			ulong magnitude = 1,
 			double sampleRate = 1.0)
 		{
-			this.c_pipe.Increment(this.ApplyKeyPrefix(key), magnitude, sampleRate);
+			this.c_pipe.Increment(this.ApplyKeyAffixes(key), magnitude, sampleRate);
 		}
 
 
@@ -34,7 +38,7 @@ namespace Metric.Client
 			ulong magnitude = 1,
 			double sampleRate = 1.0)
 		{
-			this.c_pipe.Decrement(this.ApplyKeyPrefix(key), magnitude, sampleRate);
+			this.c_pipe.Decrement(this.ApplyKeyAffixes(key), magnitude, sampleRate);
 		}
 
 
@@ -43,7 +47,7 @@ namespace Metric.Client
 			ulong value,
 			double sampleRate = 1.0)
 		{
-			this.c_pipe.Gauge(this.ApplyKeyPrefix(key), value, sampleRate);
+			this.c_pipe.Gauge(this.ApplyKeyAffixes(key), value, sampleRate);
 		}
 
 
@@ -52,7 +56,7 @@ namespace Metric.Client
 			TimeSpan value,
 			double sampleRate = 1.0)
 		{
-			this.c_pipe.Timing(this.ApplyKeyPrefix(key), value, sampleRate);
+			this.c_pipe.Timing(this.ApplyKeyAffixes(key), value, sampleRate);
 		}
 
 
@@ -63,10 +67,10 @@ namespace Metric.Client
 		}
 
 
-		private string ApplyKeyPrefix(
+		private string ApplyKeyAffixes(
 			string key)
 		{
-			return this.c_keyPrefix  + key;
+			return this.c_keyPrefix  + key + this.c_keySuffix;
 		}
 	}
 }
