@@ -20,7 +20,7 @@ namespace Metric.Client
 			this.c_keySuffix = keySuffix;
 
 			if (!string.IsNullOrWhiteSpace(this.c_keyPrefix))	{ this.c_keyPrefix += "."; }
-			if (!string.IsNullOrWhiteSpace(this.c_keySuffix))	{ this.c_keySuffix = this.c_keySuffix + "."; }
+			if (!string.IsNullOrWhiteSpace(this.c_keySuffix))	{ this.c_keySuffix = "." + this.c_keySuffix; }
 		}
 
 
