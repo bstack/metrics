@@ -58,6 +58,14 @@ namespace Metric.Client
 		}
 
 
+		public void Set(
+			string key,
+			long value)
+		{
+			this.Send(1.0, String.Format("{0}:{1}|s", key, value));		// No sample rate for Sets, so we default to 1.0
+		}
+
+
 		private void Send(
 			double sampleRate,
 			params string[] statistics)

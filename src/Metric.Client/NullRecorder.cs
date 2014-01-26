@@ -41,6 +41,14 @@ namespace Metric.Client
 		}
 
 
+		public void Set(
+			string key,
+			long value)
+		{
+			// No op
+		}
+
+
 		public IDisposable StartTimer(
 			string key)
 		{

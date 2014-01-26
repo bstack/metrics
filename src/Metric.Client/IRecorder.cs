@@ -29,6 +29,11 @@ namespace Metric.Client
 			double sampleRate = 1.0);
 
 
+		void Set(
+			string key,
+			long value);
+
+
 		IDisposable StartTimer(
 			string key);
 	}

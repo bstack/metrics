@@ -60,6 +60,14 @@ namespace Metric.Client
 		}
 
 
+		public void Set(
+			string key,
+			long value)
+		{
+			this.c_pipe.Set(this.ApplyKeyAffixes(key), value);
+		}
+
+
 		public IDisposable StartTimer(
 			string key)
 		{
