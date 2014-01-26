@@ -44,7 +44,7 @@ namespace Metric.Client
 
 		public void Gauge(
 			string key,
-			ulong value,
+			long value,
 			double sampleRate = 1.0)
 		{
 			this.c_pipe.Gauge(this.ApplyKeyAffixes(key), value, sampleRate);

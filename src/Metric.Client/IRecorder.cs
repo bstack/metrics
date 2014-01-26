@@ -19,7 +19,7 @@ namespace Metric.Client
 		
 		void Gauge(
 			string key,
-			ulong value,
+			long value,
 			double sampleRate = 1.0);
 		
 		

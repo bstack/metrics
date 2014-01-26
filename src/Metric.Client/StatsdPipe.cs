@@ -42,7 +42,7 @@ namespace Metric.Client
 
 		public void Gauge(
 			string key,
-			ulong value,
+			long value,
 			double sampleRate = 1.0)
 		{
 			this.Send(sampleRate, String.Format("{0}:{1}|g", key, value));

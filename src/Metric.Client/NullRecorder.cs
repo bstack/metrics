@@ -25,7 +25,7 @@ namespace Metric.Client
 
 		public void Gauge(
 			string key,
-			ulong value,
+			long value,
 			double sampleRate = 1.0)
 		{
 			// No op
