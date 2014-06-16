@@ -1,17 +1,25 @@
 ﻿// Customised version of https://raw.github.com/etsy/statsd/master/examples/csharp_example.cs
+using Common.Logging;
 using System;
-using System.Linq;
 using System.Net.Sockets;
 using System.Threading;
 using System.Text;
+
 
 
 namespace Metric.Client
 {
 	public class StatsdPipe
 	{
+		private readonly ILog c_logger;
 		private readonly UdpClient c_udpClient;
 		private readonly ThreadLocal<Random> c_random = new ThreadLocal<Random>(() => new Random());
+
+
+		public StatsdPipe()
+		{
+			this.c_logger = LogManager.GetCurrentClassLogger();
+		}
 
 
 		public StatsdPipe(
@@ -95,7 +103,20 @@ namespace Metric.Client
 			string statistic)
 		{
 			var _statisticData = Encoding.Default.GetBytes(statistic);
-			this.c_udpClient.Send(_statisticData, _statisticData.Length);
+
+			try
+			{
+				this.c_udpClient.Send(_statisticData, _statisticData.Length);
+			}
+			catch(Exception exception)
+			{
+				var _exceptionDetail = string.Format("{0} {1} - {2}",
+					exception.GetType().FullName,
+					exception.Message.Replace(Environment.NewLine, " "),
+					exception.StackTrace.Replace(Environment.NewLine, "|"));
+
+				this.c_logger.ErrorFormat("UDPClient Send Exception : {0}", _exceptionDetail);
+			}
 		}
 	}
 }
