@@ -16,16 +16,11 @@ namespace Metric.Client
 		private readonly ThreadLocal<Random> c_random = new ThreadLocal<Random>(() => new Random());
 
 
-		public StatsdPipe()
-		{
-			this.c_logger = LogManager.GetCurrentClassLogger();
-		}
-
-
 		public StatsdPipe(
 			string hostName,
 			int port)
 		{
+			this.c_logger = LogManager.GetCurrentClassLogger();
 			this.c_udpClient = new UdpClient(hostName, port);
 		}
 
