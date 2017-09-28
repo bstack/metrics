@@ -1,5 +1,5 @@
 ﻿// Customised version of https://raw.github.com/etsy/statsd/master/examples/csharp_example.cs
-using Common.Logging;
+using log4net;
 using System;
 using System.Net.Sockets;
 using System.Threading;
@@ -20,7 +20,7 @@ namespace Metric.Client
 			string hostName,
 			int port)
 		{
-			this.c_logger = LogManager.GetCurrentClassLogger();
+			this.c_logger = LogManager.GetLogger(this.GetType());
 			this.c_udpClient = new UdpClient(hostName, port);
 		}
 
