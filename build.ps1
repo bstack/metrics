@@ -15,9 +15,9 @@ write-host "### Paths"
 $nugetSpecFileName = 'Metric.Client.nuspec'
 $rootDirectoryPath = (split-path ($MyInvocation.MyCommand.Path))
 $solutionFilePath = join-path $rootDirectoryPath Metrics.sln
-$releaseDirectoryPath = join-path $rootDirectoryPath packages
+$packagesDirectoryPath = join-path $rootDirectoryPath packages
 $nugetSpecFilePath = join-path $rootDirectoryPath $nugetSpecFileName
-$nugetPackageFilePath = join-path $releaseDirectoryPath $nugetSpecFileName.Replace('.nuspec', '.' + $version + '.nupkg')
+$nugetPackageFilePath = join-path $packagesDirectoryPath $nugetSpecFileName.Replace('.nuspec', '.' + $version + '.nupkg')
 
 
 echo "### nuget ensure we have our dependencies"
@@ -32,10 +32,10 @@ if ($LastExitCode -ne 0) { write-host 'Compile failure !'; exit 1 }
 
 write-host "### nuget pack"
 # Ensure we have an empty packages directory
-if (test-path $releaseDirectoryPath) { rm -recurse -force $releaseDirectoryPath }
-mkdir $releaseDirectoryPath | out-null
+if (test-path $packagesDirectoryPath) { rm -recurse -force $packagesDirectoryPath }
+mkdir $packagesDirectoryPath | out-null
 # nuget pack
-nuget pack $nugetSpecFilePath -outputdirectory $releaseDirectoryPath -version $version -verbosity detailed
+nuget pack $nugetSpecFilePath -outputdirectory $packagesDirectoryPath -version $version -verbosity detailed
 
 
 write-host "### Push instruction"
