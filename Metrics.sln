@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metric.Client", "src\Metric.Client\Metric.Client.csproj", "{8B943A3F-0129-412D-A279-BA42D079FDAA}"
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metric.Client", "src\Metric.Client\Metric.Client.csproj", "{8B943A3F-0129-412D-A279-BA42D079FDAA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metric.Inv", "src\Metric.Inv\Metric.Inv.csproj", "{2B29AE57-74DD-4608-B2C7-E634017A5EAF}"
 EndProject
@@ -22,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {29B2C61D-F1CC-4E8F-901B-7B19BE74E9BE}
 	EndGlobalSection
 EndGlobal

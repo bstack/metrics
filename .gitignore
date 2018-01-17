@@ -6,7 +6,11 @@ obj/
 *.sln.DotSettings.user
 *.csproj.user
 *.suo
+.vs/
 
 # Resharper files
 *resharper*
 _resharper*/
+
+# nuget
+**/packages/*
