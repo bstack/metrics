@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metric.Client", "src\Metric.Client\Metric.Client.csproj", "{8B943A3F-0129-412D-A279-BA42D079FDAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metric.Inv", "src\Metric.Inv\Metric.Inv.csproj", "{2B29AE57-74DD-4608-B2C7-E634017A5EAF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Metric.Inv", "src\Metric.Inv\Metric.Inv.csproj", "{A1D87FCE-BE73-4E98-891A-312CED78D149}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{8B943A3F-0129-412D-A279-BA42D079FDAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B943A3F-0129-412D-A279-BA42D079FDAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B943A3F-0129-412D-A279-BA42D079FDAA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2B29AE57-74DD-4608-B2C7-E634017A5EAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2B29AE57-74DD-4608-B2C7-E634017A5EAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2B29AE57-74DD-4608-B2C7-E634017A5EAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2B29AE57-74DD-4608-B2C7-E634017A5EAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1D87FCE-BE73-4E98-891A-312CED78D149}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1D87FCE-BE73-4E98-891A-312CED78D149}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1D87FCE-BE73-4E98-891A-312CED78D149}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1D87FCE-BE73-4E98-891A-312CED78D149}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

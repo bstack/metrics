@@ -1,32 +1,56 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
+#if NETCORE
+using System.IO;
+using Microsoft.Extensions.Configuration;
+#endif
+#if NETFULL
+using System.Configuration;
+#endif
 
 
 namespace Metric.Inv.v3.SampleUsage
 {
 	public class Program
 	{
-		public static readonly Configuration Configuration;
+		public static readonly ConfigurationSettings ConfigurationSettings;
 		public static readonly Metric.Client.IRecorder Metrics;
 
 
 		static Program()
 		{
-			Program.Configuration = new Configuration();
+			Program.ConfigurationSettings = new ConfigurationSettings();
+#if NETCORE
+			var builder = new ConfigurationBuilder()
+					.SetBasePath(Directory.GetCurrentDirectory())
+					.AddJsonFile("appsettings.json");
+			var configurationRoot = builder.Build();
+			configurationRoot.GetSection("configurationsettings").Bind(Program.ConfigurationSettings);
+#else
+			Program.ConfigurationSettings.MetricsHostName = Program.GetConfigurationSettingsValue("metricsHostName");
+			Program.ConfigurationSettings.MetricsPort = int.Parse(Program.GetConfigurationSettingsValue("metricsPort", "0"));
+			Program.ConfigurationSettings.MetricsKeyPrefix = Program.GetConfigurationSettingsValue("metricsKeyPrefix");
+			Program.ConfigurationSettings.MetricsKeySuffix = Program.GetConfigurationSettingsValue("metricsKeySuffix");
+
+
+#endif
+			Program.ConfigurationSettings.IsConfiguredForClient =
+				(Program.ConfigurationSettings.MetricsHostName != null && Program.ConfigurationSettings.MetricsPort > 0);
 
 			Program.Metrics = new Metric.Client.NullRecorder();
-			if (Program.Configuration.IsConfiguredForClient)
+			if (Program.ConfigurationSettings.IsConfiguredForClient)
 			{
 				Program.Metrics = new Metric.Client.Recorder(
-					new Metric.Client.StatsdPipe(Program.Configuration.HostName, Program.Configuration.Port),
-					Program.Configuration.KeyPrefix,
-					Program.Configuration.KeySuffix);
+					new Metric.Client.StatsdPipe(
+						Program.ConfigurationSettings.MetricsHostName,
+						Program.ConfigurationSettings.MetricsPort),
+						Program.ConfigurationSettings.MetricsKeyPrefix,
+						Program.ConfigurationSettings.MetricsKeySuffix);
 			}
 		}
-		
-		
+
+
 		public static void Run(
 			bool doRunServer = true,
 			bool doRunClient = true)
@@ -39,7 +63,7 @@ namespace Metric.Inv.v3.SampleUsage
 					() =>
 						{
 							var _listener = new Server.Server(
-								Program.Configuration.Port,
+								Program.ConfigurationSettings.MetricsPort,
 								new Metric.Inv.v3.Server.IStatisticsProcessor[] { new Metric.Inv.v3.Server.ConsoleWriterStatisticsProcessor() });
 							_listener.Start();
 						},
@@ -78,5 +102,18 @@ namespace Metric.Inv.v3.SampleUsage
 
 			_cancellationTokenSource.Cancel();
 		}
+
+
+#if NETFULL
+		private static string GetConfigurationSettingsValue(
+			string key,
+			string defaultedValue = null)
+		{
+			var _appSettings = ConfigurationManager.AppSettings;
+			var _keyValue = _appSettings[key];
+
+			return _keyValue ?? defaultedValue;
+		}
+#endif
 	}
 }

@@ -8,7 +8,7 @@ namespace Metric.Inv
 		static void Main(
 			string[] args)
 		{
-			if (args.Length == 0) { args = new[] { "client" }; }
+			if (args.Length == 0) { args = new[] { "server" }; }
 
 			Metric.Inv.v3.SampleUsage.Program.Run(
 				(args.Length > 0 && args[0].IndexOf("server") >= 0),

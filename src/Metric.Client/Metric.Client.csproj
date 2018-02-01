@@ -1,8 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net47</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>Metric.Client</PackageId>
+    <Version>3.0.0.0</Version>
+    <Authors>CCS</Authors>
+    <Description>Metrics client library</Description>
   </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
+    <PackageReference Include="System.Net.Sockets" Version="4.3.0" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.8" />

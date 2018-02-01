@@ -1,12 +1,24 @@
 # bin and obj directories at any depth
 bin/
 obj/
+.vs/
 
+# nuget packages
+packages
+
+# Build result directory
+release
+
+# NUnit files 
+TestResult.xml
 # Visual studio files
 *.sln.DotSettings.user
 *.csproj.user
 *.suo
 .vs/
+
+# Visual studio code
+.vscode
 
 # Resharper files
 *resharper*

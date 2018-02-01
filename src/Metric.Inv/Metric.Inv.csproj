@@ -1,90 +1,38 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2B29AE57-74DD-4608-B2C7-E634017A5EAF}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Metric.Inv</RootNamespace>
-    <AssemblyName>Metric.Inv</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFrameworks>netcoreapp2.0</TargetFrameworks>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net47' ">
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0" />
+  </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="v3\Configuration.cs" />
-    <Compile Include="v3\SampleUsage\Program.cs" />
-    <Compile Include="v3\SampleUsage\Worker.cs" />
-    <Compile Include="v3\Server\ConsoleWriterStatisticsProcessor.cs" />
-    <Compile Include="v3\Server\StatisticType.cs" />
-    <Compile Include="v3\Server\IStatisticsProcessor.cs" />
-    <Compile Include="v3\Server\SimplePeriodicFileDumperStatisticsProcessor.cs" />
-    <Compile Include="v3\Server\Server.cs" />
-    <Compile Include="v2\NullRecorder.cs" />
-    <Compile Include="v2\IRecorderTimerCompletion.cs" />
-    <Compile Include="v2\RecorderTimer.cs" />
-    <Compile Include="v2\StatsdPipe.cs" />
-    <Compile Include="v2\IRecorder.cs" />
-    <Compile Include="v2\Program.cs" />
-    <Compile Include="v2\Recorder.cs" />
-    <Compile Include="v2\Server.cs" />
-    <Compile Include="v2\Worker.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="v1\etsy_statsd_client.cs" />
-    <Compile Include="v1\IRecorder.cs" />
-    <Compile Include="v1\Program.cs" />
-    <Compile Include="v1\Recorder.cs" />
-    <Compile Include="v1\Server.cs" />
-    <Compile Include="v1\Worker.cs" />
-    <Compile Include="v3\Server\RawStatistic.cs" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.0.0" />
   </ItemGroup>
+
   <ItemGroup>
-    <None Include="App.config" />
+    <ProjectReference Include="..\Metric.Client\Metric.Client.csproj" />
   </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\Metric.Client\Metric.Client.csproj">
-      <Project>{8b943a3f-0129-412d-a279-ba42d079fdaa}</Project>
-      <Name>Metric.Client</Name>
-    </ProjectReference>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0'">
+    <DefineConstants>NETCORE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net47'">
+    <DefineConstants>NETFULL</DefineConstants>
+  </PropertyGroup>
+
 </Project>
