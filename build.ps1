@@ -16,8 +16,8 @@ if (test-path $packagesDirectoryPath) { Remove-Item -recurse -force $packagesDir
 
 write-host "### Build and pack"
 dotnet clean $solutionFilePath
-dotnet pack $solutionFilePath --configuration Release /p:PackageVersion=$version --output $packagesDirectoryPath
+dotnet pack $solutionFilePath --configuration Release /p:PackageVersion=$version /p:Version=$version --output $packagesDirectoryPath
 if ($LastExitCode -ne 0) { write-host 'Build and pack failure !'; exit 1 }
 
 write-host "### Push instruction"
-write-host "Copy-Item $packagesDirectoryPath\Metric.Client.*.nupkg' YOUR_NUGET_LOCATION"
+write-host "Copy-Item '$packagesDirectoryPath\Metric.Client.*.nupkg' YOUR_NUGET_LOCATION"
